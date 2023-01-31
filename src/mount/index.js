@@ -1,3 +1,4 @@
+import css from '../css'
 import wait from "../wait"
 import each from "../each"
 import last from "../last"
@@ -20,6 +21,7 @@ import {
 } from "../type"
 
 const methods = {
+  css,
   wait,
   last,
   keys,
