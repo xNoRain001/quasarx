@@ -4,6 +4,7 @@ import each from "../each"
 import last from "../last"
 import keys from "../keys"
 import alias from "../alias"
+import urlParams from '../url-params'
 import { 
   isNull,
   getType,
@@ -35,6 +36,7 @@ const methods = {
   isBigInt,
   isSymbol,
   isBoolean,
+  urlParams,
   isFunction,
   isArrayLike,
   isUndefined,

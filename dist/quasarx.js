@@ -4,14 +4,6 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.x = factory());
 })(this, (function () { 'use strict';
 
-  var wait = function wait(time) {
-    return new Promise(function (resolve) {
-      setTimeout(function () {
-        resolve();
-      }, time);
-    });
-  };
-
   var keys = function keys(target) {
     var stringKeys = Object.keys(target);
     var symbolKeys = Object.getOwnPropertySymbols(target);
@@ -106,6 +98,24 @@
     return target;
   };
 
+  var css = function css(el, attrOrPairs, value) {
+    if (isString(attrOrPairs)) {
+      el.style[attrOrPairs] = value;
+    } else {
+      each(attrOrPairs, function (value, attr) {
+        el.style[attr] = value;
+      });
+    }
+  };
+
+  var wait = function wait(time) {
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve();
+      }, time);
+    });
+  };
+
   var last = function last(ary) {
     return ary[ary.length - 1];
   };
@@ -117,7 +127,28 @@
     x.now = Date.now;
   };
 
+  var urlParams = function urlParams(url) {
+    var params = {};
+    url.replace(/([^?=&#]+)=([^?=&#]+)/g, function () {
+      for (var _len = arguments.length, _ref = new Array(_len), _key = 0; _key < _len; _key++) {
+        _ref[_key] = arguments[_key];
+      }
+      var $1 = _ref[1],
+        $2 = _ref[2];
+      params[$1] = $2;
+    });
+    url.replace(/#([^?=&#]+)/g, function () {
+      for (var _len2 = arguments.length, _ref2 = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        _ref2[_key2] = arguments[_key2];
+      }
+      var $1 = _ref2[1];
+      params.hash = $1;
+    });
+    return params;
+  };
+
   var methods = {
+    css: css,
     wait: wait,
     last: last,
     keys: keys,
@@ -131,6 +162,7 @@
     isBigInt: isBigInt,
     isSymbol: isSymbol,
     isBoolean: isBoolean,
+    urlParams: urlParams,
     isFunction: isFunction,
     isArrayLike: isArrayLike,
     isUndefined: isUndefined,
