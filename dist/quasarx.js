@@ -98,12 +98,35 @@
     return target;
   };
 
-  var css = function css(el, attrOrPairs, value) {
-    if (isString(attrOrPairs)) {
-      el.style[attrOrPairs] = value;
+  var css = function css(el, propOrPairs, value) {
+    if (isUndefined(value)) {
+      // 获取多个样式的值
+      if (isArray(propOrPairs)) {
+        var values = [];
+        each(propOrPairs, function (prop) {
+          values.push(el.style[prop]);
+        });
+        return values;
+      }
+
+      // 获取单个样式的值
+      if (isString(propOrPairs)) {
+        return el.style[propOrPairs];
+      }
+
+      // 设置多个样式的值
+      each(propOrPairs, function (value, prop) {
+        el.style[prop] = value;
+      });
+      return;
+    }
+    if (isString(propOrPairs)) {
+      // 设置单个样式的值
+      el.style[propOrPairs] = value;
     } else {
-      each(attrOrPairs, function (value, attr) {
-        el.style[attr] = value;
+      // 多个样式设置相同的值
+      each(propOrPairs, function (prop) {
+        el.style[prop] = value;
       });
     }
   };
@@ -118,6 +141,40 @@
 
   var last = function last(ary) {
     return ary[ary.length - 1];
+  };
+
+  var attr = function attr(el, attrOrPairs, value) {
+    if (isUndefined(value)) {
+      // 获取多个属性的值
+      if (isArray(attrOrPairs)) {
+        var values = [];
+        each(attrOrPairs, function (attr) {
+          values.push(el.getAttribute(attr));
+        });
+        return values;
+      }
+
+      // 获取单个属性的值
+      if (isString(attrOrPairs)) {
+        return el.getAttribute(attrOrPairs);
+      }
+
+      // 设置多个属性的值
+      each(attrOrPairs, function (value, attr) {
+        console.log(attr, value);
+        el.setAttribute(attr, value);
+      });
+      return;
+    }
+    if (isString(attrOrPairs)) {
+      // 设置单个属性的值
+      el.setAttribute(attrOrPairs, value);
+    } else {
+      // 多个属性设置相同的值
+      each(attrOrPairs, function (attr) {
+        el.setAttribute(attr, value);
+      });
+    }
   };
 
   var alias = function alias(x) {
@@ -153,6 +210,7 @@
     wait: wait,
     last: last,
     keys: keys,
+    attr: attr,
     each: each,
     isNull: isNull,
     isArray: isArray,

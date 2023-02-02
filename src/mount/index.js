@@ -3,6 +3,7 @@ import wait from "../wait"
 import each from "../each"
 import last from "../last"
 import keys from "../keys"
+import attr from '../attr'
 import alias from "../alias"
 import urlParams from '../url-params'
 import { 
@@ -26,6 +27,7 @@ const methods = {
   wait,
   last,
   keys,
+  attr,
   each,
   isNull,
   isArray,
