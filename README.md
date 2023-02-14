@@ -14,6 +14,21 @@ x[method]()
 
 ## APIs
 
+### alias
+
+- x.stringify or x.json -> JSON.stringify
+
+- x.parse -> JSON.parse
+
+- x.el -> document.querySelector.bind(document)
+
+- x.createEl -> document.createElement.bind(document)
+
+- x.now -> Date.now
+
+- x.type -> x.getType
+```
+
 ### getType
 
 ```js
@@ -123,7 +138,7 @@ foo()
 x.urlParams('http://example.com?foo=bar#baz') // output: { foo: bar, hash: baz }
 ```
 
-### CSS
+### css
 
 ```js
 /**
@@ -148,3 +163,7 @@ x.css(body, ['color', 'backgroundColor'], 'red')
 x.css(body, 'width') // output: 100vw
 x.css(body, ['width', 'height']) // output: ['100vw', '100vh']
 ```
+
+### attr
+
+like css

@@ -4,6 +4,7 @@ const alias = x => {
   x.el = document.querySelector.bind(document)
   x.createEl = document.createElement.bind(document)
   x.now = Date.now
+  x.type = x.getType
 }
 
 export default alias
