@@ -1,6 +1,6 @@
 ## Introduction
 
-JavaScript utils。
+JavaScript utils.
 
 ## Start
 
@@ -108,4 +108,43 @@ async function foo () {
 }
 
 foo()
+```
+
+### urlParams
+
+```js
+/**
+ * parse url
+ * 
+ * @param {string} url - url
+ * @returns {Object} - result
+ */
+
+x.urlParams('http://example.com?foo=bar#baz') // output: { foo: bar, hash: baz }
+```
+
+### CSS
+
+```js
+/**
+ * set or get style
+ * 
+ * @param {HTMLElement} el - element
+ * @param {string|Object} propOrPairs - options
+ * @param {string} [value=undefined] - style value
+ */
+
+const { body } = document
+
+// set
+x.css(body, 'width', '100vw')
+x.css(body, {
+  width: '100vw',
+  height: '100vh'
+})
+x.css(body, ['color', 'backgroundColor'], 'red')
+
+// get
+x.css(body, 'width') // output: 100vw
+x.css(body, ['width', 'height']) // output: ['100vw', '100vh']
 ```
