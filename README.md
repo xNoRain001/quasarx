@@ -20,14 +20,13 @@ x[method]()
 
 - x.parse -> JSON.parse
 
-- x.el -> document.querySelector.bind(document)
+- x.el -> document.querySelector
 
-- x.createEl -> document.createElement.bind(document)
+- x.createEl -> document.createElement
 
 - x.now -> Date.now
 
 - x.type -> x.getType
-```
 
 ### getType
 
@@ -167,3 +166,20 @@ x.css(body, ['width', 'height']) // output: ['100vw', '100vh']
 ### attr
 
 like css
+
+### delete
+
+```js
+/**
+ * delete property
+ * 
+ * @param {Object} target - target
+ * @param {string|Array} props - the props you want to delete
+ * @returns {Object} - result
+ */
+
+const o = { foo: 'foo', bar: 'bar', baz: 'baz' }
+
+x.delete(o, 'foo') // { bar: 'bar', baz: 'baz' }
+x.delete(o, ['bar', 'baz']) // {}
+```

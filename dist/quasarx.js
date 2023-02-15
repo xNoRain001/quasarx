@@ -184,6 +184,17 @@
     x.createEl = document.createElement.bind(document);
     x.now = Date.now;
     x.type = x.getType;
+    x["delete"] = x._delete;
+  };
+
+  var _delete = function _delete(target, keys) {
+    if (isString(keys)) {
+      delete target[keys];
+    } else {
+      each(keys, function (key) {
+        return delete target[key];
+      });
+    }
   };
 
   var urlParams = function urlParams(url) {
@@ -215,6 +226,7 @@
     each: each,
     isNull: isNull,
     isArray: isArray,
+    _delete: _delete,
     getType: getType,
     isObject: isObject,
     isNumber: isNumber,

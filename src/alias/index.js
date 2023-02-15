@@ -5,6 +5,7 @@ const alias = x => {
   x.createEl = document.createElement.bind(document)
   x.now = Date.now
   x.type = x.getType
+  x.delete = x._delete
 }
 
 export default alias

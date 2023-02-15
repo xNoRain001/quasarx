@@ -5,6 +5,7 @@ import last from "../last"
 import keys from "../keys"
 import attr from '../attr'
 import alias from "../alias"
+import _delete from '../delete'
 import urlParams from '../url-params'
 import { 
   isNull,
@@ -31,6 +32,7 @@ const methods = {
   each,
   isNull,
   isArray,
+  _delete,
   getType,
   isObject,
   isNumber,
