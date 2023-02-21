@@ -217,6 +217,14 @@
     return params;
   };
 
+  var addEventListener = function addEventListener(el, type, cb) {
+    var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+    el.addEventListener(type, cb, options);
+    return function () {
+      el.removeEventListener(type, cb, options);
+    };
+  };
+
   var methods = {
     css: css,
     wait: wait,
@@ -238,7 +246,8 @@
     isFunction: isFunction,
     isArrayLike: isArrayLike,
     isUndefined: isUndefined,
-    isPlainObject: isPlainObject
+    isPlainObject: isPlainObject,
+    addEventListener: addEventListener
   };
   var mount = function mount(x) {
     each(methods, function (value, key) {

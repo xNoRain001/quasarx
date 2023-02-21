@@ -7,6 +7,7 @@ import attr from '../attr'
 import alias from "../alias"
 import _delete from '../delete'
 import urlParams from '../url-params'
+import addEventListener from '../add-event-listener'
 import { 
   isNull,
   getType,
@@ -44,7 +45,8 @@ const methods = {
   isFunction,
   isArrayLike,
   isUndefined,
-  isPlainObject
+  isPlainObject,
+  addEventListener
 }
 
 const mount = x => {

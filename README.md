@@ -183,3 +183,24 @@ const o = { foo: 'foo', bar: 'bar', baz: 'baz' }
 x.delete(o, 'foo') // { bar: 'bar', baz: 'baz' }
 x.delete(o, ['bar', 'baz']) // {}
 ```
+
+### addEventListener
+
+```js
+/**
+ * add event listener
+ * 
+ * @param {HTMLElement} el - element
+ * @param {string} type - event type
+ * @param {Function} cb - callback
+ * @returns {Function} - remove listener
+ */
+
+const unListen = x.addEventListener(document.body, 'click', () => {
+  // ...
+})
+
+setTimeout(() => {
+  unListen() // remove listener
+}, 3000)
+```
